@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${poppins.className} bg-contrast_black`}
+        className={`${poppins.className} bg-contrast_black overflow-x-hidden`}
       >
         <Navbar/>
         {children}
