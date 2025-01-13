@@ -3,6 +3,7 @@ import { Geist, Geist_Mono,Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,12 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="">
       <body
-        className={`${poppins.className} bg-contrast_black overflow-x-hidden`}
+        className={`${poppins.className} bg-contrast_black overflow-x-hidden scroll-smooth`}
       >
-        <Navbar/>
+
+          <Navbar/>
         {children}
+
       </body>
     </html>
   );

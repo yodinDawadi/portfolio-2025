@@ -13,14 +13,12 @@ gsap.from(headingRef.current,{
   x:-50,
   opacity:0,
   duration:2,
-  delay:1
 
 })
 gsap.from(linksRef.current,{
   y:-50,
   opacity:0,
   duration:2,
-  delay:1,
   stagger:0.3
 
 })
@@ -36,6 +34,7 @@ gsap.from(linksRef.current,{
             <Link className='text-text'  href={"/home"}>home</Link>
             <Link className='text-text' href={"/about"}>about</Link>
             <Link className='text-text' href={"/contact"}>contact</Link>
+            <Link className='text-text' href={"/project"}>project</Link>
         </div>
     </nav>
   )
