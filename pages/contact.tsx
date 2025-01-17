@@ -26,19 +26,6 @@ const Contact = () => {
       }
     });
     gsap.from(subHeadRef.current,{
-      scale:0,
-      opacity:0,
-      duration:2,
-      scrollTrigger:{
-        trigger:contactPageRef.current,
-        scrub:2,
-        markers:false,
-        scroller:"body",
-        start:"top 100%",
-        end:"top 0%"
-      }
-    });
-    gsap.from(subHeadRef.current,{
       y:50,
       opacity:0,
       duration:2,
@@ -55,6 +42,7 @@ const Contact = () => {
       scale:0,
       opacity:0,
       duration:2,
+      zIndex:1,
       scrollTrigger:{
         trigger:contactPageRef.current,
         scrub:2,
@@ -73,7 +61,7 @@ const Contact = () => {
             <p ref={headRef} className='w-full text-center text-5xl font-bold'>Contact Me</p>
             <p ref={subHeadRef} className='w-full text-center'>Let's get connected</p>
         </div>
-        <div ref={cardDivRef} className='w-full h-3/5'>
+        <div ref={cardDivRef} className='w-full h-3/5 z-50'>
             <ContactCard/>
         </div>
     </div>
