@@ -28,6 +28,7 @@ const About = () => {
         end:"top 0%"
       }
     })
+    
     gsap.from(leftCardRef.current,{
       x:-1200,
       duration:2,
@@ -60,39 +61,6 @@ const About = () => {
         
       }
     })
-    gsap.to(leftCardRef.current,{
-      x:-1200,
-      duration:2,
-      opacity:0,
-      rotate:-10,
-      stagger:0.3,
-      scrollTrigger:{
-        trigger:endRef.current,
-        scrub:2,
-        markers:false,
-        scroller:"body",
-        start:"top 100%",
-        end:"top 20%"
-        
-      }
-    })
-    
-    gsap.to(rightCardRef.current,{
-      x:1200,
-      duration:2,
-      opacity:0,
-      rotate:-10,
-      stagger:0.3,
-      scrollTrigger:{
-        trigger:endRef.current,
-        scrub:2,
-        markers:false,
-        scroller:"body",
-        start:"top 100%",
-        end:"top 0%"
-        
-      }
-    })
     
   },[])
 
@@ -117,6 +85,7 @@ const About = () => {
           <AboutCard ref={addToRefsLeft} title=' My Tech Stack?' content='I specialize in frontend development with React.js, JavaScript, and Tailwind CSS, while also working on backend technologies like Node.js, Express.js, MongoDB and PostgreSQL, with a keen interest in learning TypeScript and NextJs.'/>
           <AboutCard ref={addToRefsLeft} title=' My Journey?' content='Currently pursuing a B.Sc. CSIT at Central Campus of Technology, Dharan, I began my coding journey with C++ and grew into frontend development. Now, Im building real-world applications and exploring backend technologies.'/>
           </div>
+          
           <div ref={rightdivRef} className='w-1/2 flex flex-col justify-center items-center gap-5' id="right">
           <AboutCard ref={addToRefsRight} title='Why Work With Me?' content='I bring a unique mix of frontend proficiency, backend exploration, and a passion for creating intuitive user experiences. My approach is collaborative, detail-oriented, and focused on delivering results that exceed expectations.'/>
           <AboutCard ref={addToRefsRight} title='Beyond the Code' content='Beyond coding, I enjoy exploring new ideas and technologies that inspire growth. I value collaboration and constantly seek ways to improve myself. When not working, I spend time connecting with friends and learning something new.'/>

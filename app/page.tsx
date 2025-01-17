@@ -1,12 +1,13 @@
 "use client";
-import About from "@/pages/about";
-import Hero from "@/pages/Hero";
+import About from "@/components/about";
+import Hero from "@/components/Hero";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Link from "next/link";
 import Lenis from "lenis";
-import Contact from "@/pages/contact";
+import Contact from "@/components/contact";
+import Projects from "@/components/projects";
 
 export default function Home() {
   const [isHidden, setIsHidden] = useState<boolean>();
@@ -59,6 +60,7 @@ gsap.to(dotRef.current,{
     <Hero/>
     <About/>
     <Contact/>
+    <Projects/>
     </>
   );
 }
