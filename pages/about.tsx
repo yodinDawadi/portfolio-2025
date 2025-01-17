@@ -10,10 +10,24 @@ const About = () => {
   const rightdivRef = useRef<HTMLInputElement>(null)
   const leftdivRef = useRef<HTMLInputElement>(null)
   const aboutPageRef = useRef<HTMLInputElement>(null)
+  const endRef = useRef<HTMLInputElement>(null)
   const leftCardRef = useRef<HTMLDivElement[]>([]);
   const rightCardRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(()=>{
+    gsap.from(headRef.current,{
+      y:50,
+      opacity:0,
+      duration:2,
+      scrollTrigger:{
+        trigger:aboutPageRef.current,
+        scrub:2,
+        markers:false,
+        scroller:"body",
+        start:"top 100%",
+        end:"top 0%"
+      }
+    })
     gsap.from(leftCardRef.current,{
       x:-1200,
       duration:2,
@@ -23,7 +37,7 @@ const About = () => {
       scrollTrigger:{
         trigger:aboutPageRef.current,
         scrub:2,
-        markers:false,
+        markers:true,
         scroller:"body",
         start:"top 100%",
         end:"top 0%"
@@ -46,19 +60,40 @@ const About = () => {
         
       }
     })
-    gsap.from(headRef.current,{
-      y:50,
-      opacity:0,
+    gsap.to(leftCardRef.current,{
+      x:-1200,
       duration:2,
+      opacity:0,
+      rotate:-10,
+      stagger:0.3,
       scrollTrigger:{
-        trigger:aboutPageRef.current,
+        trigger:endRef.current,
+        scrub:2,
+        markers:false,
+        scroller:"body",
+        start:"top 100%",
+        end:"top 20%"
+        
+      }
+    })
+    
+    gsap.to(rightCardRef.current,{
+      x:1200,
+      duration:2,
+      opacity:0,
+      rotate:-10,
+      stagger:0.3,
+      scrollTrigger:{
+        trigger:endRef.current,
         scrub:2,
         markers:false,
         scroller:"body",
         start:"top 100%",
         end:"top 0%"
+        
       }
     })
+    
   },[])
 
   const addToRefsLeft = (el: HTMLDivElement | null) => {
@@ -72,7 +107,7 @@ const About = () => {
     }
   };
   return (
-    <div ref={aboutPageRef} className='  w-screen h-auto'>
+    <div ref={aboutPageRef} className='  w-screen h-auto '>
         <div id='text-heading'>
             <p ref={headRef} className='text-5xl font-semibold text-center text-white w-full mb-20'>About Me</p>
         </div>
@@ -87,7 +122,7 @@ const About = () => {
           <AboutCard ref={addToRefsRight} title='Beyond the Code' content='Beyond coding, I enjoy exploring new ideas and technologies that inspire growth. I value collaboration and constantly seek ways to improve myself. When not working, I spend time connecting with friends and learning something new.'/>
           <AboutCard ref={addToRefsRight} title='What I’m Working On?' content='I am currently focused on developing full-stack web applications using the MERN stack, improving user authentication systems, and creating solutions that prioritize performance and usability.'/>
           </div>
-        </div>
+        </div><div ref={endRef}></div>
     </div>
   )
 }

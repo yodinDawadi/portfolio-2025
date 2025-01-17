@@ -5,12 +5,15 @@ import { Button } from "@/components/ui/button"
 import profile from "@/public/profile.png"
 import Image from 'next/image'
 import image from '@/public/ccchaos.svg'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger);
 
 
 const Hero = () => {
-  var initialPath =`M 10 100 Q 720 100 1430 100`
-var finalPath =`M 10 100 Q 720 100 1430 100`
+  var initialPath =`M 10 100 Q 720 100 1500 100`
+var finalPath =`M 10 100 Q 720 100 1500 100`
   const headingRef = useRef<HTMLInputElement>(null);
+  const pageRef = useRef<HTMLInputElement>(null);
   const subheadingRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement >(null);
   const imageRef = useRef<HTMLImageElement >(null);
@@ -23,7 +26,7 @@ var finalPath =`M 10 100 Q 720 100 1430 100`
 
   useEffect(()=>{
 stringRef.current?.addEventListener("mousemove",function(dets){
-    initialPath=`M 10 100 Q  ${(dets.x)/3} ${(dets.y)/3} 1430 100`
+    initialPath=`M 10 100 Q  ${(dets.x)} ${(dets.y)/3} 1500 100`
  gsap.to(pathRef.current,{
     attr:{d:initialPath},
     duration:0.3,
@@ -62,13 +65,26 @@ stringRef.current?.addEventListener("mousemove",function(dets){
     })
 
     gsap.from(pathRef.current,{
-      attr:{d:"M 10 100 Q 720 100 10 100"},
+      attr:{d:"M 10 100 Q 720 100 0 100"},
       duration:2
     })
+
+    gsap.to(pageRef.current,{
+      x:-100,
+      duration:5,
+      opacity:0,
+      scrollTrigger:{
+        trigger:buttonRef.current,
+        scrub:2,
+        markers:false,
+        scroller:"body",
+        start:"top 20%",
+        end:"top 0%"
+    }})
   },[])
   return (
     <>
-    <div className='w-full h-screen flex flex-wrap'>
+    <div ref={pageRef} className='w-full h-screen flex flex-wrap'>
       <div className='w-2/5 flex flex-col text-white justify-center h-96 px-7 gap-5' id='texts'>
 
         <p ref={headingRef} className='w-full text-pretty text-5xl font-medium'>Hello i'm Yodin Dawadi. A Full Stack Developer from Nepal.</p>
@@ -81,7 +97,7 @@ stringRef.current?.addEventListener("mousemove",function(dets){
       </div>
       <div ref={stringRef} id="string" className=' w-full  h-40'>
     <svg className='w-full h-full' xmlns="http://www.w3.org/2000/svg">
-        <path className='z-10' ref={pathRef} d="M 10 100 Q 720 100 1430 100" stroke="white" fill="transparent"/>
+        <path className='z-10' ref={pathRef} d="M 10 100 Q 720 100 1500 100" stroke="white" fill="transparent"/>
       </svg>
 </div>
     </div>

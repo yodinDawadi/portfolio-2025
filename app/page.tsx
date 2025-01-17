@@ -6,11 +6,13 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Link from "next/link";
 import Lenis from "lenis";
+import Contact from "@/pages/contact";
 
 export default function Home() {
-  const [isHidden, setIsHidden] = useState<boolean>(true);
+  const [isHidden, setIsHidden] = useState<boolean>();
   const dotRef = useRef<HTMLInputElement>(null)
   useEffect(()=>{
+    setIsHidden(true);
 
 const lenis = new Lenis();
 function raf(time:any){
@@ -56,6 +58,7 @@ gsap.to(dotRef.current,{
     </div>
     <Hero/>
     <About/>
+    <Contact/>
     </>
   );
 }
